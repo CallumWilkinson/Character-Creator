@@ -24,13 +24,18 @@ namespace Character_Creator.nUnitTests
 
             //create table for testing
             _connection.Execute(@"
-            CREATE TABLE Characters (
+            CREATE TABLE IF NOT EXISTS Characters (
                 CharacterID INTEGER PRIMARY KEY AUTOINCREMENT,
                 Name TEXT NOT NULL,
                 Race TEXT NOT NULL,
                 Class TEXT NOT NULL,
                 Level INTEGER NOT NULL
             );");
+
+            //expecting dapper to return 0 as it will only return 1 when a row is affected
+            //and since this is creating a table, technically no rows are affected so its normal for it to be zero
+            //therefore it appears that the table is created successfully so the issue is not here
+            
         }
 
         [TearDown]
@@ -52,6 +57,8 @@ namespace Character_Creator.nUnitTests
                     ["ConnectionStrings:DefaultConnection"] = _connection.ConnectionString,
                 })
                 .Build();
+
+            //issue could be here maybe?
 
 
 
