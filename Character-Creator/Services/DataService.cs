@@ -20,8 +20,16 @@ public class DataService
 
     public int AddCharacter(Character character)
     {
-        using (var db = new SqliteConnection(_connectionString))
-            //this is the issue, var db is set to sqlite db, state is closed so no table exists
+        using (IDbConnection db = new SqliteConnection(_connectionString))
+            //this is the issue! var db is set to sqlite db, state is closed so no table exists
+            //var db should be pointing to my inmemory db
+            //i need to figure out why the state of the db is closed
+            //i think its cos the databse is closed, it runs the insert then opens, so the table is created then erased when closed
+            //its asif this line above creats a second in memory db, it doesnt use the one that is created when the test starts and the table is added??
+            //probaby cos of the new keyword
+
+            //so how do i, in the line above, reference the in memory db made in the test??
+
         {
             var sql = "INSERT INTO Characters (Name, Race, Class, Level) VALUES (@Name, @Race, @Class, @Level)";
             return db.Execute(sql, character);
