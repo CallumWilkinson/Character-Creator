@@ -12,6 +12,10 @@ public class DataService
     public DataService(IConfiguration configuration)
     {
         _connectionString = configuration.GetConnectionString("DefaultConnection");
+        if (_connectionString == null )
+        {
+            throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+        }
     }
 
     public int AddCharacter(Character character)

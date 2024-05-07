@@ -4,6 +4,8 @@ using Dapper;
 using System.Data;
 using Character_Creator.Services;
 using Character_Creator.Models;
+using Microsoft.Extensions.Configuration;
+using NUnit.Framework.Legacy;
 
 
 namespace Character_Creator.nUnitTests
@@ -39,9 +41,34 @@ namespace Character_Creator.nUnitTests
         }
 
         [Test]
-        public void Test1()
+        public void AddCharacterToDatabase()
         {
-            Assert.Pass();
+            //Arrange
+
+            //setup configuration with connection string
+           var configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(new Dictionary<string, string>
+                {
+                    ["ConnectionStrings:DefaultConnection"] = _connection.ConnectionString,
+                })
+                .Build();
+
+
+
+            var dataservice = new DataService(configuration);
+            var character = new Character
+            {
+                Name = "Nibzy",
+                Race = "Night Elf",
+                Class = "Hunter",
+                Level = 10,
+            };
+
+            //Act
+            int result = dataservice.AddCharacter(character);
+
+            //Assert
+            ClassicAssert.AreEqual(result, 1);
         }
     }
 }
