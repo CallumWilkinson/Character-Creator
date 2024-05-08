@@ -13,12 +13,16 @@ namespace Character_Creator.nUnitTests
     [TestFixture]
     public class DataServiceTests
     {
+        
         private IDbConnection _connection;
 
         [SetUp]
         public void Setup()
         {
             //setup in memory database connection
+            //this is polymorphism - the SqliteConnection class implements the IDbConnection interface.
+            //so i can swith out the SqliteConnection class for a different connection type like SqlConnection for Microsoft SQL Server.
+            //this way i can use any database I want and keep the code that uses the IDbConnection interface.
             _connection = new SqliteConnection("Data Source=:memory:");
             _connection.Open();
 
@@ -32,9 +36,6 @@ namespace Character_Creator.nUnitTests
                 Level INTEGER NOT NULL
             );");
 
-            //expecting dapper to return 0 as it will only return 1 when a row is affected
-            //and since this is creating a table, technically no rows are affected so its normal for it to be zero
-            //therefore it appears that the table is created successfully so the issue is not here
             
         }
 
