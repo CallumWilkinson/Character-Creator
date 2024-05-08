@@ -12,6 +12,10 @@ public class DataService
     //This ensures i can create an in-memory database in my test and keep that connection open in this class.
     private readonly IDbConnection _db;
 
+
+    //this is dependency injection as the class doesnt depend on a specific database
+    //I can instantiate the class with an in memory db or a persistant one
+    //this is very testable code
     public DataService(IDbConnection db)
     {
        _db = db;
