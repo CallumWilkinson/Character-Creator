@@ -13,7 +13,7 @@ namespace Character_Creator.nUnitTests
     [TestFixture]
     public class DataServiceTests
     {
-        private SqliteConnection _connection;
+        private IDbConnection _connection;
 
         [SetUp]
         public void Setup()
@@ -50,19 +50,8 @@ namespace Character_Creator.nUnitTests
         {
             //Arrange
 
-            //setup configuration with connection string
-           var configuration = new ConfigurationBuilder()
-                .AddInMemoryCollection(new Dictionary<string, string>
-                {
-                    ["ConnectionStrings:DefaultConnection"] = _connection.ConnectionString,
-                })
-                .Build();
 
-            //issue could be here maybe?
-
-
-
-            var dataservice = new DataService(configuration);
+            var dataservice = new DataService(_connection);
             var character = new Character
             {
                 Name = "Nibzy",
