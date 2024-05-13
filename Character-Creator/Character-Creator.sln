@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character-Creator", "Character-Creator.csproj", "{51C4E0D6-0C1D-4EB0-A717-DD26E3EAC96B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Character-Creator.nUnitTests", "..\Character-Creator.nUnitTests\Character-Creator.nUnitTests.csproj", "{7C74F244-FA87-4521-A783-F07F1085AD78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Character-Creator.nUnitTests", "..\Character-Creator.nUnitTests\Character-Creator.nUnitTests.csproj", "{7C74F244-FA87-4521-A783-F07F1085AD78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,7 +21,7 @@ namespace Character_Creator.nUnitTests
         {
             //setup in memory database connection
             //this is polymorphism - the SqliteConnection class implements the IDbConnection interface.
-            //so i can swith out the SqliteConnection class for a different connection type like SqlConnection for Microsoft SQL Server.
+            //so i can switch out the SqliteConnection class for a different connection type like SqlConnection for Microsoft SQL Server.
             //this way i can use any database I want and keep the code that uses the IDbConnection interface.
             _connection = new SqliteConnection("Data Source=:memory:");
             _connection.Open();

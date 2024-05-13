@@ -21,7 +21,7 @@ namespace Character_Creator
 
             // Add services to the container.
             //add razorpages
-            builder.Services.AddRazorPages();
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
             //build container
             var app = builder.Build();
