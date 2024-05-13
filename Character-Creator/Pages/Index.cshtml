@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@* this is a view *@
 
 <h2 class="text-center mb-5">Characters</h2>
 
@@ -21,11 +22,9 @@
         <th>Class</th>
         <th>Level</th>
     </tr>
-
-
-
-
-
-
-
+    @* model.characters references the characters list in the model behind this page *@
+    @foreach(var character in Model.Characters)
+    {
+        <tr></tr>   
+    }
 </table>

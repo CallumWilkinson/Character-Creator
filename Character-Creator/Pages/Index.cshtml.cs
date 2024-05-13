@@ -1,16 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Character_Creator.Models;
 
 namespace Character_Creator.Pages
 {
+
+    //this is a model
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public List<Character> Characters { get; set; } = new List<Character>();
 
         public void OnGet()
         {
