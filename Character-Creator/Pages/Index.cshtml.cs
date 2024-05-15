@@ -20,7 +20,7 @@ namespace Character_Creator.Pages
         public void OnGet()
         {
             //populate this class' characters list with the characters in the db
-            Characters = _dataBase.Characters.OrderByDescending(p => p.Id).ToList();
+            //Characters = _dataBase.
 
         }
     }

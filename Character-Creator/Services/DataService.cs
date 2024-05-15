@@ -12,7 +12,6 @@ public class DataService
     //This ensures i can create an in-memory database in my test and keep that connection open in this class.
     private readonly IDbConnection _db;
 
-    //do i need dbSet field?
 
 
     //this is dependency injection as the class doesnt depend on a specific database
@@ -25,17 +24,28 @@ public class DataService
 
     public int AddCharacter(Character character)
     {
-        
-        {
-            //dont think i need _db.Open(); but it reads better with it here
-            _db.Open();
-            var sql = "INSERT INTO Characters (Name, Race, Class, Level) VALUES (@Name, @Race, @Class, @Level)";
-            int rowsaffected = _db.Execute(sql, character);
-            return rowsaffected;
+        //dont think i need _db.Open(); but it reads better with it here
+        _db.Open();
+        var sql = "INSERT INTO Characters (Name, Race, Class, Level) VALUES (@Name, @Race, @Class, @Level)";
+        int rowsaffected = _db.Execute(sql, character);
+        return rowsaffected;
 
-            //in my projects database, i want to delete the table made in the gui and create an sql query to make the table, i think?
+        //in my projects database, i want to delete the table made in the gui and create an sql query to make the table, i think?
+    }
+
+    public int GetCharacterByID(int id)
+    {
+        var sql = "SELECT * FROM Characters WHERE CharacterId = @Id";
+        //parameters object is used to pass the id value into the query, it creates a temporary object that holds the ID propery so that Dapper can map the @ID placeholder in the sql query
+        var parameters = new {Id = id};
+        var character = _db.QueryFirstOrDefault<Character>(sql, parameters);
+
+        if (character == null)
+        {
+            // Handle the case where no character is found
+            throw new Exception("Character not found");
         }
 
-  
+        return character;
     }
 }

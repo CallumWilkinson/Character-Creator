@@ -6,6 +6,7 @@ using Character_Creator.Services;
 using Character_Creator.Models;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework.Legacy;
+using FluentAssertions;
 
 
 namespace Character_Creator.nUnitTests
@@ -63,9 +64,14 @@ namespace Character_Creator.nUnitTests
 
             //Act
             int result = dataservice.AddCharacter(character);
+            var expectedCharacter = dataservice.GetCharacterByID(result);
 
             //Assert
-            ClassicAssert.AreEqual(result, 1);
+            expectedCharacter.Name.Should().Be("Nibzy");
+
+
+
+
         }
     }
 }
