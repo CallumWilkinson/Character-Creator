@@ -15,6 +15,6 @@ namespace Character_Creator.Models
         [MaxLength(20)]
         public string Class { get; set; } = "";
 
-        public int? Level { get; set; }
+        public int Level { get; set; }
     }
 }

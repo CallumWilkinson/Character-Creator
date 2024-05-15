@@ -33,7 +33,7 @@ public class DataService
         //in my projects database, i want to delete the table made in the gui and create an sql query to make the table, i think?
     }
 
-    public int GetCharacterByID(int id)
+    public Character GetCharacterByID(int id)
     {
         var sql = "SELECT * FROM Characters WHERE CharacterId = @Id";
         //parameters object is used to pass the id value into the query, it creates a temporary object that holds the ID propery so that Dapper can map the @ID placeholder in the sql query
