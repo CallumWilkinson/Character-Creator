@@ -28,10 +28,25 @@ namespace Character_Creator.nUnitTests
             _connection = new SqliteConnection("Data Source=:memory:");
             _connection.Open();
 
-            TestSetup testsetup = new TestSetup();
-            testsetup.createTable(_connection);
-            testsetup.addInitialCharacters(_connection);
+            //create table for testing
+            _connection.Execute(@"
+            CREATE TABLE IF NOT EXISTS Characters (
+                CharacterID INTEGER PRIMARY KEY AUTOINCREMENT,
+                Name TEXT NOT NULL,
+                Race TEXT NOT NULL,
+                Class TEXT NOT NULL,
+                Level INTEGER NOT NULL
+            );");
 
+            //add 5 characters to db, note that these are not character objects
+            var insertDataQuery = @"
+                INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Chadowform', 'Night Elf', 'Druid', 15);
+                INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Trapsbrah', 'Human', 'Warrior', 60);
+                INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Nabz', 'Gnome', 'Mage', 3);
+                INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Orcboi', 'Orc', 'Warlock', 26);
+                INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Nuffiet', 'Dwarf', 'Paladin', 38);
+            ";
+            _connection.Execute(insertDataQuery);
 
         }
 
@@ -46,7 +61,6 @@ namespace Character_Creator.nUnitTests
         public void TestAddCharacterToDatabase()
         {
             //Arrange
-
             DataService dataservice = new DataService(_connection);
             Character character = new Character
             {
