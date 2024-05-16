@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using NUnit.Framework.Legacy;
 using FluentAssertions;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Data.Common;
 
 
 namespace Character_Creator.nUnitTests
@@ -76,6 +77,39 @@ namespace Character_Creator.nUnitTests
 
             //Assert
             expectedCharacter.Name.Should().Be("Nibzy");
+
+        }
+    }
+
+
+
+    [TestFixture]
+    
+    public class DefaultTestSetup
+    {
+        private IDbConnection _connection;
+
+        [SetUp]
+        public void Setup()
+        {
+            _connection = new SqliteConnection("Data Source=:memory:");
+            _connection.Open();
+
+            TestSetup testSetup = new TestSetup();
+            testSetup.Run(_connection);
+        }
+
+        [TearDown]
+        public void Teardown()
+        {
+            //close in-memory database
+            _connection.Close();
+        }
+
+        [Test]
+
+        public void Test1()
+        {
 
         }
     }
