@@ -42,10 +42,16 @@ public class DataService
 
         if (character == null)
         {
-            // Handle the case where no character is found
+            //throw error when no character is found in db
             throw new Exception("Character not found");
         }
 
         return character;
     }
+
+    public Character EditCharacter(Character character)
+    {
+        return character;
+    }
+    public void DeleteCharacter(int id) { }
 }

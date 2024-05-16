@@ -27,17 +27,9 @@ namespace Character_Creator.nUnitTests
             _connection = new SqliteConnection("Data Source=:memory:");
             _connection.Open();
 
-            //create table for testing
-            _connection.Execute(@"
-            CREATE TABLE IF NOT EXISTS Characters (
-                CharacterID INTEGER PRIMARY KEY AUTOINCREMENT,
-                Name TEXT NOT NULL,
-                Race TEXT NOT NULL,
-                Class TEXT NOT NULL,
-                Level INTEGER NOT NULL
-            );");
-
-            
+            var testsetup = new TestSetup();
+            testsetup.createTable(_connection);
+            testsetup.addInitialCharacters(_connection);
         }
 
         [TearDown]
@@ -48,10 +40,9 @@ namespace Character_Creator.nUnitTests
         }
 
         [Test]
-        public void AddCharacterToDatabase()
+        public void TestAddCharacterToDatabase()
         {
             //Arrange
-
 
             var dataservice = new DataService(_connection);
             var character = new Character
