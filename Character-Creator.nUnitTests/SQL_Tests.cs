@@ -28,7 +28,7 @@ namespace Character_Creator.nUnitTests
             _connection = new SqliteConnection("Data Source=:memory:");
             _connection.Open();
 
-            var testsetup = new TestSetup();
+            TestSetup testsetup = new TestSetup();
             testsetup.createTable(_connection);
             testsetup.addInitialCharacters(_connection);
 
@@ -47,8 +47,8 @@ namespace Character_Creator.nUnitTests
         {
             //Arrange
 
-            var dataservice = new DataService(_connection);
-            var character = new Character
+            DataService dataservice = new DataService(_connection);
+            Character character = new Character
             {
                 Name = "Nibzy",
                 Race = "Night Elf",
