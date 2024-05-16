@@ -60,9 +60,6 @@ namespace Character_Creator.nUnitTests
             //Assert
             expectedCharacter.Name.Should().Be("Nibzy");
 
-
-
-
         }
     }
 }

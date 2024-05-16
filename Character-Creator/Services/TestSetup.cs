@@ -28,7 +28,7 @@ namespace Character_Creator.Services
                 INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Nabz', 'Gnome', 'Mage', 3);
                 INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Orcboi', 'Orc', 'Warlock', 26);
                 INSERT INTO Characters (Name, Race, Class, Level) VALUES ('Nuffiet', 'Dwarf', 'Paladin', 38);
-        ";
+            ";
             connection.Execute(insertDataQuery);
         }
     }

@@ -27,10 +27,12 @@ public class DataService
         //dont think i need _db.Open(); but it reads better with it here
         _db.Open();
         var sql = "INSERT INTO Characters (Name, Race, Class, Level) VALUES (@Name, @Race, @Class, @Level)";
-        int rowsaffected = _db.Execute(sql, character);
-        return rowsaffected;
 
-        //in my projects database, i want to delete the table made in the gui and create an sql query to make the table, i think?
+        //executeScalar will return the first record of the row that was jsut inserted, which will be the ID
+        //whereas regular .execute will retun the ammount of rows added
+        int characterID = _db.ExecuteScalar<int>(sql, character);
+        return characterID;
+        
     }
 
     public Character GetCharacterByID(int id)
