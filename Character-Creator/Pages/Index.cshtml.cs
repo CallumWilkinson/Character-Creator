@@ -19,7 +19,7 @@ namespace Character_Creator.Pages
 
         public void OnGet()
         {
-            //populate this class' characters list with the characters in the db
+            //populate this class' characters list with the 5 default characters in the db
             Character char1 = _dataBase.GetCharacterByID(1);
             Character char2 = _dataBase.GetCharacterByID(2);
             Character char3 = _dataBase.GetCharacterByID(3);
