@@ -26,10 +26,12 @@ public class DataService
     {
         //dont think i need _db.Open(); but it reads better with it here
         _db.Open();
-        var sql = "INSERT INTO Characters (Name, Race, Class, Level) VALUES (@Name, @Race, @Class, @Level)";
+        var sql = "INSERT INTO Characters (Name, Race, Class, Level) " +
+            "VALUES (@Name, @Race, @Class, @Level);" +
+            "SELECT last_insert_rowid();";
 
-        //executeScalar will return the first record of the row that was jsut inserted, which will be the ID
-        //whereas regular .execute will retun the ammount of rows added
+        //executeScalar will return the first record of the row that was jsut inserted becuase i added "SELECT last_insert_rowid();, which will be the ID
+        //whereas regular .execute will only return the amount of rows added
         int characterID = _db.ExecuteScalar<int>(sql, character);
         return characterID;
         

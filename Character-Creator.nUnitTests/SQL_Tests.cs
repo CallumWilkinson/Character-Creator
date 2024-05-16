@@ -7,6 +7,7 @@ using Character_Creator.Models;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework.Legacy;
 using FluentAssertions;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 
 namespace Character_Creator.nUnitTests
@@ -30,6 +31,8 @@ namespace Character_Creator.nUnitTests
             var testsetup = new TestSetup();
             testsetup.createTable(_connection);
             testsetup.addInitialCharacters(_connection);
+
+
         }
 
         [TearDown]
@@ -54,8 +57,8 @@ namespace Character_Creator.nUnitTests
             };
 
             //Act
-            int result = dataservice.AddCharacter(character);
-            var expectedCharacter = dataservice.GetCharacterByID(result);
+            int characterID = dataservice.AddCharacter(character);
+            Character expectedCharacter = dataservice.GetCharacterByID(characterID);
 
             //Assert
             expectedCharacter.Name.Should().Be("Nibzy");
