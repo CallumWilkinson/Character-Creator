@@ -40,53 +40,22 @@ namespace Character_Creator.nUnitTests
             //arrange
             TestSetup testsetup = new TestSetup();
             DataService dataService = new DataService(_connection);
-            Character Chadowform = new Character
-            {
-                Name = "Chadowform",
-                Race = "Night Elf",
-                Class = "Druid",
-                Level = 15,
-            };
-            Character Trapsbrah = new Character
-            {
-                Name = "Trapsbrah",
-                Race = "Human",
-                Class = "Warrior",
-                Level = 60,
-            };
-            Character Nabz = new Character
-            {
-                Name = "Nabz",
-                Race = "Gnome",
-                Class = "Mage",
-                Level = 3,
-            };
-            Character Orcboi = new Character
-            {
-                Name = "Orcboi",
-                Race = "Orc",
-                Class = "Warlock",
-                Level = 26,
-            };
-            Character Nuffiet = new Character
-            {
-                Name = "Nuffiet",
-                Race = "Dwarf",
-                Class = "Paladin",
-                Level = 38,
-            };
-
 
             //act
-            testsetup.createTable(_connection);
-            dataService.AddCharacter(Chadowform);
-            dataService.AddCharacter(Trapsbrah);
-            dataService.AddCharacter(Nabz);
-            dataService.AddCharacter(Orcboi);
-            dataService.AddCharacter(Nuffiet);
-           
+            testsetup.Run(_connection);
+            Character Chadowform = dataService.GetCharacterByID(1);
+            Character Trapsbrah = dataService.GetCharacterByID(2);
+            Character Nabz = dataService.GetCharacterByID(3);
+            Character Orcboi = dataService.GetCharacterByID(4);
+            Character Nuffiet = dataService.GetCharacterByID(5);
 
             //assert
+            Chadowform.Name.Should().Be("Chadowform");
+            Trapsbrah.Name.Should().Be("Trapsbrah");
+            Nabz.Name.Should().Be("Nabz");
+            Orcboi.Name.Should().Be("Orcboi");
+            Nuffiet.Name.Should().Be("Nuffiet");
+
         }
     }
 }
