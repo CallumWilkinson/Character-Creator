@@ -25,6 +25,10 @@ namespace Character_Creator
             DataService mainDataBase = new DataService(dataBaseString);
             builder.Services.AddSingleton(mainDataBase);
 
+            //create database table and add initial data to it
+            TestSetup setupDatabaseData = new TestSetup();
+            setupDatabaseData.Run(dataBaseString);
+
             //build container
             var app = builder.Build();
 
