@@ -25,6 +25,12 @@
     @* model.characters references the characters list in the model behind this page *@
     @foreach(var character in Model.Characters)
     {
-        <tr></tr>   
+        <tr>
+            <td>@character.CharacterId</td>
+            <td>@character.Name</td>
+            <td>@character.Race</td>
+            <td>@character.Class</td>
+            <td>@character.Level</td>
+        </tr>   
     }
 </table>

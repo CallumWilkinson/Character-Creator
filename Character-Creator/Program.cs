@@ -26,7 +26,9 @@ namespace Character_Creator
             builder.Services.AddSingleton(mainDataBase);
 
             //create database table and add initial data to it
+            //this should only run once as i added if null logic to the run function
             TestSetup setupDatabaseData = new TestSetup();
+            dataBaseString.Open();
             setupDatabaseData.Run(dataBaseString);
 
             //build container
