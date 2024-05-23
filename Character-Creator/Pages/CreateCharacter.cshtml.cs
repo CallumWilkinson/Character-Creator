@@ -23,7 +23,7 @@ namespace Character_Creator.Pages
         public void OnPost() 
         {
             //save the new character to the database
-            Character character = new Character()
+            Character newCharacter = new Character()
             {
                 Name = Character.Name,
                 Race = Character.Race,
@@ -31,22 +31,19 @@ namespace Character_Creator.Pages
                 Level = Character.Level,
             };
 
-            _dataBase.AddCharacter(character);
-            
-
-
-
-
-
-
-
-
-            //i think i need to use [bindpropery] on the character object so that when user enters name ect in the form it automatically maps that to the characer object
-           
-
+            _dataBase.AddCharacter(newCharacter);
 
 
             //clear the form
+            Character.Name = "";
+            Character.Race = "";
+            Character.Class = "";
+            Character.Level = 0;
+
+            ModelState.Clear();
+
+            Response.Redirect("Index");
+
         }
     }
 }
