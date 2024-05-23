@@ -46,11 +46,11 @@ public class DataService
         var parameters = new {Id = id};
         var character = _db.QueryFirstOrDefault<Character>(sql, parameters);
 
-        if (character == null)
-        {
-            //throw error when no character is found in db
-            throw new Exception("Character not found");
-        }
+        //if (character == null)
+        //{
+        //    //throw error when no character is found in db
+        //    throw new Exception("Character not found");
+        //}
 
         return character;
     }
@@ -63,11 +63,19 @@ public class DataService
         return orderedListOfCharacters;
     }
 
+    public void DeleteCharacter(int id) 
+    {
+        var sql = "DELETE FROM Characters WHERE CharacterId = @Id";
+        var parameters = new {Id = id};
+        var delete = _db.QueryFirstOrDefault<Character>(sql,parameters);
+    }
+
+
     public Character EditCharacter(Character character)
     {
         return character;
     }
-    public void DeleteCharacter(int id) { }
+   
 
  
 }

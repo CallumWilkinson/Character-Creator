@@ -31,6 +31,12 @@
             <td>@character.Race</td>
             <td>@character.Class</td>
             <td>@character.Level</td>
+            <td style="white-space:nowrap">
+                <a class="btn btn-primary btn-sm">Edit</a>
+                <span @* method="post" *@>
+                    <a class="btn btn-danger btn-sm" @* asp-page-handler="Delete" *@>Delete</a>
+                </span>
+            </td>
         </tr>   
     }
 </table>

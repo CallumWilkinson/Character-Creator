@@ -1,4 +1,5 @@
 ﻿using Character_Creator.Services;
+using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace Character_Creator.nUnitTests
 
     [TestFixture]
 
-    public class DefaultTestSetup
+    public class DeleteButtonTest
     {
         private IDbConnection _connection;
 
@@ -35,16 +36,19 @@ namespace Character_Creator.nUnitTests
 
         [Test]
 
-        public void Test1()
+        public void testingDeleteFunction()
         {
             //Arrange
+            DataService _database = new DataService(_connection);
 
 
             //Act
+            _database.DeleteCharacter(1);
+            var result = _database.GetCharacterByID(1);
 
 
             //Assert
-
+            result.Should().BeNull();
         }
     }
 }
