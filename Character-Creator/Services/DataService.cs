@@ -22,6 +22,8 @@ public class DataService
        _db = db;
     }
 
+ 
+
     public int AddCharacter(Character character)
     {
         //dont think i need _db.Open(); but it reads better with it here
@@ -53,9 +55,18 @@ public class DataService
         return character;
     }
 
+    public List<Character> GetAllCharacters()
+    {
+        var sql = "SELECT * FROM Characters";
+        var listOfCharacters = _db.Query<Character>(sql).ToList();
+        return listOfCharacters;
+    }
+
     public Character EditCharacter(Character character)
     {
         return character;
     }
     public void DeleteCharacter(int id) { }
+
+ 
 }
