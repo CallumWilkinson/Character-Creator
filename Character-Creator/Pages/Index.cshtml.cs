@@ -32,12 +32,7 @@ namespace Character_Creator.Pages
             //Characters.Add(char4);
             //Characters.Add(char5);
 
-
-
-            //i think i want to go into the dataservice class and create a function called GetAllCharacters that returns a list of all of the characters in the database
-            //then call _dataBase.GetAllCharacters.OrderedByDescending(p => p.id);
-
-            Characters = _dataBase.
+            Characters = _dataBase.GetAllCharacters();
 
         }
     }

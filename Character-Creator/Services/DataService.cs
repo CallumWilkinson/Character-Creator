@@ -59,7 +59,8 @@ public class DataService
     {
         var sql = "SELECT * FROM Characters";
         var listOfCharacters = _db.Query<Character>(sql).ToList();
-        return listOfCharacters;
+        var orderedListOfCharacters = listOfCharacters.OrderByDescending(c => c.CharacterId).ToList();
+        return orderedListOfCharacters;
     }
 
     public Character EditCharacter(Character character)
