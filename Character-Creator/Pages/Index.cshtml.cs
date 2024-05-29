@@ -24,7 +24,18 @@ namespace Character_Creator.Pages
 
         public void OnPost()
         {
+            //int searchId = 1;
+            //Character foundCharacter = Characters.Find(character => character.CharacterId == searchId);
+            //int foundCharacterID = foundCharacter.CharacterId;
+
+
             //_dataBase.DeleteCharacter();
+        }
+
+        public IActionResult OnPostDelete(int characterID)
+        {
+            _dataBase.DeleteCharacter(characterID);
+            return RedirectToPage();
         }
     }
 }
