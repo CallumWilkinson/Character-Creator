@@ -33,7 +33,7 @@
             <td>@character.Class</td>
             <td>@character.Level</td>
             <td style="white-space:nowrap">
-                <a class="btn btn-primary btn-sm" style="display: inline-block">Edit</a>
+                <a class="btn btn-primary btn-sm" style="display: inline-block" href="/EditCharacter">Edit</a>
                 <form method="post" asp-page-handler="Delete" asp-route-characterID="@character.CharacterId" style="display: inline-block; margin: 0;">
                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete @character.Name?');">Delete</button>
                 </form>
