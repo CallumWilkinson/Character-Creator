@@ -24,6 +24,8 @@ namespace Character_Creator.Pages
 
         public void OnPost(int id) 
         {
+            //_dataBase.UpdateCharacter(Character);
+            //Response.Redirect("/Index");
         }
     }
 }

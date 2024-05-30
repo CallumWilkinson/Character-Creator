@@ -65,9 +65,16 @@ public class DataService
     }
 
 
-    public Character EditCharacter(Character character)
+    public int UpdateCharacter(Character character)
     {
-        return character;
+        var sql = @"UPDATE Characters
+                    SET Name = @Name,
+                    Race = @Race,
+                    Class = @Class,
+                    Level = @Level
+                    WHERE CharacterId = @CharacterId";
+        var rowsaffected = _db.Execute(sql, character);
+        return rowsaffected;
     }
    
 

@@ -1,4 +1,6 @@
-﻿using Character_Creator.Services;
+﻿using Character_Creator.Models;
+using Character_Creator.Services;
+using FluentAssertions;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -12,7 +14,7 @@ namespace Character_Creator.nUnitTests
 
     [TestFixture]
 
-    public class DefaultTestSetup
+    public class UpdateCharacterTest
     {
         private IDbConnection _connection;
 
@@ -35,16 +37,27 @@ namespace Character_Creator.nUnitTests
 
         [Test]
 
-        public void Test1()
+        public void TestingUpdateFunction()
         {
             //Arrange
             DataService database = new DataService(_connection);
-
+            Character updatedCharacter = new Character
+            {
+                CharacterId = 1,
+                Name = "Charlieboi",
+                Race = "Cat",
+                Class = "Hunter",
+                Level = 60,
+            };
 
             //Act
+            var rowsaffected = database.UpdateCharacter(updatedCharacter);
+            var newCharacterInDatabase = database.GetCharacterByID(1);
 
 
             //Assert
+            rowsaffected.Should().Be(1);
+            newCharacterInDatabase.Name.Should().Be("Charlieboi");
 
         }
     }
