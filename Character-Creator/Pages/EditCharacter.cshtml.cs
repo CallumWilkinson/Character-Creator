@@ -9,6 +9,7 @@ namespace Character_Creator.Pages
     {
         private readonly DataService _dataBase;
 
+        [BindProperty]
         public Character Character { get; set; } = new Character();
 
 
@@ -18,14 +19,23 @@ namespace Character_Creator.Pages
         }
         public void OnGet(int id)
         {
-            Character currentCharacter = _dataBase.GetCharacterByID(id);
-            Character = currentCharacter;
+            Character originalCharacter = _dataBase.GetCharacterByID(id);
+            Character = originalCharacter;
         }
 
         public void OnPost(int id) 
         {
-            //_dataBase.UpdateCharacter(Character);
-            //Response.Redirect("/Index");
+            Character updatedCharacter = new Character()
+            {
+                CharacterId = id,
+                Name = Character.Name,
+                Race = Character.Race,
+                Class = Character.Class,
+                Level = Character.Level,
+            };
+
+            _dataBase.UpdateCharacter(updatedCharacter);
+            Response.Redirect("/Index");
         }
     }
 }
