@@ -1,2 +1,2 @@
 # Character-Creator
-This is my second attempt at my character creation tool project. The idea of this project is to practice databases and c sharp
+This project is a CRUD app using C Sharp and Razor Pages. I chose to use Razor Pages as I wanted to continue with my C sharp learning and make a quick front end without having to switch to javascript. The focus of this project was to learn CRUD operations, write tests and use Dapper to write SQL queries as I wanted to write raw SQL commands. The UI is a simple bootstrap table with bootstrap buttons.
