@@ -6,7 +6,7 @@ using Character_Creator.Services;
 namespace Character_Creator.Pages
 {
 
-    //this is a model
+    
     public class IndexModel : PageModel
     {
         private readonly DataService _dataBase;
@@ -24,12 +24,7 @@ namespace Character_Creator.Pages
 
         public void OnPost()
         {
-            //int searchId = 1;
-            //Character foundCharacter = Characters.Find(character => character.CharacterId == searchId);
-            //int foundCharacterID = foundCharacter.CharacterId;
-
-
-            //_dataBase.DeleteCharacter();
+         
         }
 
         public IActionResult OnPostDelete(int characterID)

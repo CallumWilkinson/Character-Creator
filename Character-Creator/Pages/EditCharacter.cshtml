@@ -2,3 +2,55 @@
 @model Character_Creator.Pages.EditCharacterModel
 @{
 }
+<div class="row">
+    <div class="col-md-8 ms-auto rounded boarder p-3">
+        <h2 class="text-center mb-5">Edit Character</h2>
+
+        <form method="post">
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Name</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Character.Name">
+                    <span asp-validation-for="Character.Name" class="danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Race</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Character.Race">
+                    <span asp-validation-for="Character.Race" class="danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Class</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Character.Class">
+                    <span asp-validation-for="Character.Class" class="danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-4 col-form-label">Level</label>
+                <div class="col-sm-8">
+                    <input class="form-control" asp-for="Character.Level">
+                    <span asp-validation-for="Character.Level" class="danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="offset-sm-4 col-sm-4 d-grid">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+                <div class="col-sm-4 d-grid">
+                    <a class="btn btn-outline-primary" href="/Index" role="button">Cancel</a>
+                </div>
+            </div>
+
+        </form>
+
+
+    </div>
+
+</div>
