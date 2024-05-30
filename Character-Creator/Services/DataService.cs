@@ -46,12 +46,6 @@ public class DataService
         var parameters = new {Id = id};
         var character = _db.QueryFirstOrDefault<Character>(sql, parameters);
 
-        //if (character == null)
-        //{
-        //    //throw error when no character is found in db
-        //    throw new Exception("Character not found");
-        //}
-
         return character;
     }
 
