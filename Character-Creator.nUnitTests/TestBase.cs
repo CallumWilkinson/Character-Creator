@@ -12,9 +12,9 @@ namespace Character_Creator.nUnitTests
 
     [TestFixture]
 
-    public class DefaultTestSetup
+    public abstract class TestBase
     {
-        private IDbConnection _connection;
+        protected IDbConnection _connection;
 
         [SetUp]
         public void Setup()
@@ -33,19 +33,6 @@ namespace Character_Creator.nUnitTests
             _connection.Close();
         }
 
-        [Test]
 
-        public void Test1()
-        {
-            //Arrange
-            DataService database = new DataService(_connection);
-
-
-            //Act
-
-
-            //Assert
-
-        }
     }
 }
