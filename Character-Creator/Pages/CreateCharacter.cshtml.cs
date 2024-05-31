@@ -18,10 +18,22 @@ namespace Character_Creator.Pages
         }
         public void OnGet()
         {
+            
+
         }
+
+        public string errorMessage = "";
+      
 
         public void OnPost() 
         {
+
+            if (!ModelState.IsValid) 
+            {
+                errorMessage = "Please provide all required fields";
+                return; 
+            }
+
             //save the new character to the database
             Character newCharacter = new Character()
             {
@@ -42,7 +54,10 @@ namespace Character_Creator.Pages
 
             ModelState.Clear();
 
-            Response.Redirect("Index");
+            
+            TempData["SuccessMessage"] = "Character created successfully! Press back to return to the Character List";
+
+       
 
         }
     }

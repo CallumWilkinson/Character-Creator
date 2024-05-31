@@ -23,8 +23,16 @@ namespace Character_Creator.Pages
             Character = originalCharacter;
         }
 
+        public string errorMessage = "";
+
         public void OnPost(int id) 
         {
+            if (!ModelState.IsValid)
+            {
+                errorMessage = "Please provide all required fields";
+                return;
+            }
+
             Character updatedCharacter = new Character()
             {
                 CharacterId = id,
@@ -35,7 +43,10 @@ namespace Character_Creator.Pages
             };
 
             _dataBase.UpdateCharacter(updatedCharacter);
-            Response.Redirect("/Index");
+
+            TempData["SuccessMessage"] = "Character created successfully! Press back to return to the Character List";
+
+
         }
     }
 }

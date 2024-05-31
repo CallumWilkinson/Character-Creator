@@ -6,15 +6,16 @@ namespace Character_Creator.Models
     {
         public int CharacterId { get; set; }
 
-        [MaxLength(20)]
+        [Required, MaxLength(20)]
         public string Name { get; set; } = "";
 
-        [MaxLength(20)]
+        [Required, MaxLength(20)]
         public string Race { get; set; } = "";
 
-        [MaxLength(20)]
+        [Required, MaxLength(20)]
         public string Class { get; set; } = "";
 
+        [Required, Range(1,60)]
         public int Level { get; set; }
     }
 }

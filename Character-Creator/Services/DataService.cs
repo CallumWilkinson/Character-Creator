@@ -67,6 +67,7 @@ public class DataService
 
     public int UpdateCharacter(Character character)
     {
+
         var sql = @"UPDATE Characters
                     SET Name = @Name,
                     Race = @Race,

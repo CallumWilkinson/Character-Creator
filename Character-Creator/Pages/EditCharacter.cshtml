@@ -6,6 +6,22 @@
     <div class="col-md-8 ms-auto rounded boarder p-3">
         <h2 class="text-center mb-5">Edit Character</h2>
 
+        @if (Model.errorMessage.Length > 0)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@Model.errorMessage</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+
         <form method="post">
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">ID</label>
@@ -51,7 +67,7 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <div class="col-sm-4 d-grid">
-                    <a class="btn btn-outline-primary" href="/Index" role="button">Cancel</a>
+                    <a class="btn btn-outline-primary" href="/Index" role="button">Back</a>
                 </div>
             </div>
 
