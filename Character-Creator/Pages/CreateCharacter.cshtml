@@ -37,16 +37,33 @@
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Race</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="Character.Race">
-                    <span asp-validation-for="Character.Race" class="danger"></span>
+                    <select class="form-select" asp-for="Character.Race"> 
+                        <option value="Human">Human</option>
+                        <option value="Night Elf">Night Elf</option>
+                        <option value="Dwarf">Dwarf</option>
+                        <option value="Gnome">Gnome</option>
+                        <option value="Orc">Orc</option>
+                        <option value="Troll">Troll</option>
+                        <option value="Tauren">Tauren</option>
+                        <option value="Undead">Undead</option>
+                    </select>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-4 col-form-label">Class</label>
                 <div class="col-sm-8">
-                    <input class="form-control" asp-for="Character.Class">
-                    <span asp-validation-for="Character.Class" class="danger"></span>
+                    <select class="form-select" asp-for="Character.Class">
+                        <option value="Druid">Druid</option>
+                        <option value="Hunter">Hunter</option>
+                        <option value="Mage">Mage</option>
+                        <option value="Paladin">Paladin</option>
+                        <option value="Priest">Priest</option>
+                        <option value="Rogue">Rogue</option>
+                        <option value="Shaman">Shaman</option>
+                        <option value="Warlock">Warlock</option>
+                        <option value="Warrior">Warrior</option>
+                    </select>
                 </div>
             </div>
 
